@@ -1,0 +1,11 @@
+FROM registry.access.redhat.com/ubi9
+
+RUN yum install -y rust cargo make
+
+WORKDIR /root/guest-components
+
+COPY . .
+
+RUN cp /root/guest-components/aa-client/docker/rhel93.repo /etc/yum.repos.d/ && dnf update -y && dnf install -y openssl-devel tpm2-tss-devel
+
+RUN cd aa-client && make && make install

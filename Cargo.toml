@@ -17,6 +17,7 @@ members = [
     "confidential-data-hub/secret",
     "image-rs",
     "ocicrypt-rs",
+    "aa-client",
 ]
 
 [workspace.dependencies]
