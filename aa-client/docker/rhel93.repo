@@ -1,0 +1,20 @@
+[rhel-93-baseos-rpms]
+name = RHEL 9.3 (RPMs) - BaseOS
+baseurl = http://download.eng.tlv.redhat.com/pub/rhel-9/nightly/RHEL-9/latest-RHEL-9.3/compose/BaseOS/x86_64/os/
+enabled = 1
+gpgkey = file:///etc/pki/rpm-gpg/RPM-GPG-KEY-redhat-release
+gpgcheck = 0
+
+[rhel-93-appstream-rpms]
+name = RHEL 9.3 (RPMs) - AppStream
+baseurl = http://download.eng.tlv.redhat.com/pub/rhel-9/nightly/RHEL-9/latest-RHEL-9.3/compose/AppStream/x86_64/os/
+enabled = 1
+gpgkey = file:///etc/pki/rpm-gpg/RPM-GPG-KEY-redhat-release
+gpgcheck = 0
+
+[rhel-93-crb-rpms]
+name = RHEL 9.3 (RPMs) - CRB
+baseurl = http://download.eng.tlv.redhat.com/pub/rhel-9/nightly/RHEL-9/latest-RHEL-9.3/compose/CRB/x86_64/os/
+enabled = 1
+gpgkey = file:///etc/pki/rpm-gpg/RPM-GPG-KEY-redhat-release
+gpgcheck = 0
