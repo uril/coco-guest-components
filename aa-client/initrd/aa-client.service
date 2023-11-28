@@ -1,0 +1,10 @@
+[Unit]
+Description=Confidential Containers Attestaion Agent Simple Client
+DefaultDependencies=no
+
+[Service]
+#Type=oneshot
+Type=simple
+ExecStart=/usr/local/bin/aa-client-service.sh param1 param2
+
+
