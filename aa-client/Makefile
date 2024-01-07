@@ -17,7 +17,7 @@ AACLIENT=$(TARGETDIR)/aa-client
 all: aa-client
 
 
-aa-client: $(TARGETDIR)/aa-client
+aa-client: $(AACLIENT)
 
 $(AACLIENT):
 	cargo build $(RELEASE) --bin aa-client
