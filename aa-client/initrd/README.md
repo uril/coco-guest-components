@@ -1,11 +1,12 @@
-Adding aa-client to initrd
+# Adding aa-client to initrd
 
+[Summary]
 One can encrypt rootfs, and get the passphrase to decrypt it via remote attestation.
 
 Currently KBS url is hard-coded, as well as the device to decrypt and the resource path. Also the passphrase is given in a file of the KBS container.
 
 
-How to test it on your laptop:
+[How to test it on your laptop]
 
 On the host:
 # I used port 5900 , use your favorite port, just enable it in the firewall
