@@ -12,10 +12,14 @@ else
 	TARGETDIR=../target/release
 endif
 
+AACLIENT=$(TARGETDIR)/aa-client
+.PHONY: all aa-client install clean
 all: aa-client
 
 
-aa-client:
+aa-client: $(TARGETDIR)/aa-client
+
+$(AACLIENT):
 	cargo build $(RELEASE) --bin aa-client
 
 install: aa-client
