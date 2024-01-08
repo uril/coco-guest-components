@@ -28,14 +28,14 @@ podman run --network=host -it quay.io/uril/coco-kbs-pubkey:2.3 /bin/bash
   kbs-client --url http://localhost:5900 config   --auth-private-key config/private.key set-resource --path default/keys/dummy --resource-file config/dummy_data
 
 - test it locally
-  AA_SAMPLE_ATTESTER_TEST=yes kbs-client --url http://localhost:5900 get-resource --path default/keys/dummy | base64 -d # verify it's 1234
+  AA_SAMPLE_ATTESTER_TEST=yes kbs-client --url http://localhost:5900 get-resource --path default/keys/dummy | base64 -d # verify it's indeed your passphrase
 
 
 ### Run the VM (currently not really cVM):
 Start with a RHEL-9 (likely works on Fedora and others too) VM, with an
 encrypted rootfs (using luks) with a known (to you) passphrase (the following
-is using the 'dummy' upstream example which is 1-90a-e
-The first time you boot, unlock rootfs by entering the passphrase
+is using the 'dummy_data' example in kbs/quickstart.md which is 1..90a..e)
+The first time the VM boots, unlock rootfs by manually entering the passphrase
 
 - Open a terminal (e.g. gnome-shell)
 #### If not done during installation, register the system such that dnf works
