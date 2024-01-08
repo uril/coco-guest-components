@@ -43,7 +43,6 @@ for i in 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20; do
 	#nc 10.0.2.2 8080 | head -1 > ${PP_FILE}.NC && break
 	#curl -s http://10.0.2.2/aa/pp -o ${PP_FILE} && break
 
-	AA_SAMPLE_ATTESTER_TEST=yes \
 	aa-client --url http://10.0.2.2:5900 get-resource --resource-path default/keys/dummy | base64 -d > ${PP_FILE} && break
 	sleep 1
 done
