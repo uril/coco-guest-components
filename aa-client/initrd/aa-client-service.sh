@@ -6,6 +6,9 @@ echo "fetching key from KBS"
 
 export AA_SAMPLE_ATTESTER_TEST=yes
 
+KBSIP="10.2.0.4"
+KBSPORT="5900"
+KBSURL="http://${KBSIP}:${KBSPORT}"
 
 PP_DIR=$(mktemp -d /tmp/PPXXXXXX)
 PP_FILE=${PP_DIR}/aa-client-pp
@@ -43,7 +46,7 @@ for i in 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20; do
 	#nc 10.0.2.2 8080 | head -1 > ${PP_FILE}.NC && break
 	#curl -s http://10.0.2.2/aa/pp -o ${PP_FILE} && break
 
-	aa-client --url http://10.0.2.2:5900 get-resource --resource-path default/keys/dummy | base64 -d > ${PP_FILE} && break
+	aa-client --url ${KBSURL} get-resource --resource-path default/keys/dummy > ${PP_FILE} && break
 	sleep 1
 done
 fi
@@ -57,7 +60,7 @@ if [ ! -s $PP_FILE ]; then
 	echo -n '1234567890abcde' > $PP_FILE
 else
 	PP=$(cat $PP_FILE);
-	echo "$PP" | tr -d '[:space:]' > $PP_FILE
+	echo "$PP" | base64 -d | tr -d '[:space:]' > $PP_FILE
 	echo "GOT KEY '$(cat $PP_FILE) '"
 fi
 
