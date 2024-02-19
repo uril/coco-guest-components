@@ -17,14 +17,16 @@ use tdx_attest_rs::{self, tdx_report_t};
 mod report;
 
 const TDX_REPORT_DATA_SIZE: usize = 64;
-const CCEL_PATH: &str = "/sys/firmware/acpi/tables/data/CCEL";
+const CCEL_PATH: &str = "/sys/firmware/acpi/tables/CCEL";
 
 pub fn detect_platform() -> bool {
     TsmReportPath::new(TsmReportProvider::Tdx).is_ok() || tdx_getquote_ioctl_is_available()
 }
 
 fn tdx_getquote_ioctl_is_available() -> bool {
-    Path::new("/dev/tdx-attest").exists() || Path::new("/dev/tdx-guest").exists()
+    Path::new("/dev/tdx-attest").exists()
+        || Path::new("/dev/tdx-guest").exists()
+        || Path::new("/dev/tdx_guest").exists()
 }
 
 fn get_quote_ioctl(report_data: &Vec<u8>) -> Result<Vec<u8>> {
