@@ -1,7 +1,7 @@
 #!/bin/bash
 
 check() {
-    echo "UUU in module-setup check($@) CHECK"
+    echo "UUU in aa-client-module-setup check($@) CHECK"
     # return 255
 }
 
@@ -10,7 +10,7 @@ depends() {
 }
 
 install () {
-    echo "UUU in module-setup install($@) INSTALL 3333"
+    echo "UUU in aa-client-module-setup install($@) INSTALL 3333"
     inst $systemdsystemunitdir/aa-client.service
     inst /usr/local/bin/aa-client-service.sh
     inst /usr/local/bin/aa-client
@@ -35,7 +35,7 @@ install () {
     #echo "UUU $modir/aa-client-hook.sh"
     #ls /usr/lib/dracut/modules.d/65aaclient/aa-client-hook.sh
     #inst_hook pre-mount 65 /usr/lib/dracut/modules.d/65aaclient/aa-client-hook.sh
-    echo "UUU in module-setup install($@) INSTALL DONE"
+    echo "UUU in aa-client-module-setup install($@) INSTALL DONE"
 }
 
 

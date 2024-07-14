@@ -29,9 +29,3 @@ ORIGINITRD=$(INITRD).orig
 initrd: # $(BINDIR)/aa-client
 	test -e $(ORIGINITRD) || mv $(INITRD) $(ORIGINITRD)
 	dracut -f $(INITRD) $(shell uname -r)
-
-#Installing /home/user/initrd/BBB/aa-client.service to /tmp/D/usr/lib/systemd/system
-#Installing /home/user/initrd/module-setup.sh to /tmp/D/usr/lib/dracut/modules.d/65aaclient
-#Installing /home/user/initrd/aa-client-hook.sh to /tmp/D/usr/lib/dracut/modules.d/65aaclient
-#Installing /home/user/initrd/aa-client-service.sh to /tmp/D/usr/local/bin
-

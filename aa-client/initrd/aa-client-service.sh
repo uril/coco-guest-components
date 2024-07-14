@@ -1,10 +1,7 @@
 #!/bin/bash -e
 
-echo "SSS AA CLIENT SERVICE SSS 3334 $@"
+echo "*** AA CLIENT SERVICE *** 1111 $@"
 #
-echo "fetching key from KBS"
-
-export AA_SAMPLE_ATTESTER_TEST=yes
 
 KBSIP="10.2.0.4"
 KBSPORT="5900"
@@ -40,33 +37,27 @@ done
 echo "DISK='$DISK' SOCK='$SOCK'"
 
 
-if [ 1 == 1 ]; then # DO skip this part for now
 for i in 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20; do
-	echo "aa-client trying to fetch the passphrase === try number $i"
-	#nc 10.0.2.2 8080 | head -1 > ${PP_FILE}.NC && break
-	#curl -s http://10.0.2.2/aa/pp -o ${PP_FILE} && break
+	echo "aa-client trying to fetch the passphrase from  ${KBSURL} === try number $i"
 
-	aa-client --url ${KBSURL} get-resource --resource-path default/keys/dummy > ${PP_FILE} && break
+	aa-client --url ${KBSURL} get-resource --resource-path default/keys/dummy123456 > ${PP_FILE} && break
 	sleep 1
 done
-fi
 
 
-#[ -e ${PP_FILE}.CURL ] && \
-#	echo "aa-client: curl got '$(cat ${PP_FILE}.CURL)'"
 
 if [ ! -s $PP_FILE ]; then
 	echo 'FAILED TO GET PP via network'
-	echo -n '1234567890abcde' > $PP_FILE
+	echo -n '123456' > $PP_FILE
 else
 	PP=$(cat $PP_FILE);
 	echo "$PP" | base64 -d | tr -d '[:space:]' > $PP_FILE
-	echo "GOT KEY '$(cat $PP_FILE) '"
+	echo "GOT KEY '$(cat $PP_FILE)' ( $PP )"
 fi
 
 
 echo -n "Testing keyfile ..."
-cryptsetup open --type luks --test-passphrase --key-file $PP_FILE  /dev/vda1 luks-4e4c3ed7-3e37-4e25-b479-b89b007de2cb \
+cryptsetup open --type luks --test-passphrase --key-file $PP_FILE  $DISK \
 	&& echo " success" || echo " bad passphrase"
 
 # see https://systemd.io/PASSWORD_AGENTS
@@ -77,9 +68,5 @@ cat $PP_FILE | /usr/lib/systemd/systemd-reply-password 1 $SOCK \
 	&& echo "Disk unlocked" || echo "Disk unlock FAILED"
 
 
-
-
-# lsblk
-# [ -e /etc/crypttab ] && cat /etc/crypttab
-echo "SSS AA CLIENT SERVICE DONE SSS"
+echo "*** AA CLIENT SERVICE DONE ***"
 
