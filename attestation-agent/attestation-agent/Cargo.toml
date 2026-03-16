@@ -103,6 +103,7 @@ hygon-dcu-attester = [
 ]
 tpm-attester = ["kbs_protocol?/tpm-attester", "attester/tpm-attester"]
 nvidia-attester = ["kbs_protocol?/nvidia-attester", "attester/nvidia-attester"]
+tpm-additional-device = ["kbs_protocol?/tpm-additional-device", "attester/tpm-additional-device"]
 
 # Either `rust-crypto` or `openssl` should be enabled to work as underlying crypto module
 rust-crypto = ["kbs_protocol?/rust-crypto"]

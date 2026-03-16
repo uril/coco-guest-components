@@ -71,6 +71,7 @@ cca-attester = ["attester/cca-attester"]
 se-attester = ["attester/se-attester"]
 tpm-attester = ["attester/tpm-attester"]
 nvidia-attester = ["attester/nvidia-attester"]
+tpm-additional-device = ["attester/tpm-additional-device"]
 
 rust-crypto = ["reqwest/rustls", "crypto/rust-crypto"]
 openssl = ["reqwest/native-tls-vendored", "crypto/openssl"]

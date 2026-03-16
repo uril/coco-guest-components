@@ -98,6 +98,6 @@ hygon = ["csv-rs"]
 cca-attester = ["tsm-report"]
 se-attester = ["pv"]
 tpm-attester = ["tss-esapi", "picky-asn1", "picky-asn1-x509", "picky-asn1-der"]
-
+tpm-additional-device = ["tpm-attester"]
 
 bin = ["clap", "tracing-subscriber"]
